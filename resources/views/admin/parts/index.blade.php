@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="border shadow col-sm-3">
+        <div class="card-header shadow col-sm-3">
             <div class="row">
                 <form action="{{route('part.store')}}" method="post" enctype="multipart/form-data" class="col">
                     @csrf
@@ -78,19 +78,17 @@
                             <td class="align-middle">{{$part->original_name}}</td>
                             <td class="align-middle">{{$part->name}}</td>
                             <td class="align-middle">{{$part->side}}</td>
-                            <td class="align-middle">{{$part->vehicle_id}}</td>
+                            <td class="align-middle">{{$part->vehicle->name}}</td>
                             <td class="align-middle">{{$part->manufacturer}}</td>
                             <td class="align-middle"><img height="50" src="{{$part->image ? $part->image->path : '' }}" alt=""></td>
                             <td class="align-middle">
-                                <a href="{{route('part.edit', $part)}}">Edit</a>
+                                <a href="{{route('part.edit', $part)}}" class="btn btn-primary">Edit Part</a>
                             </td>
                             <td class="align-middle">
                                 <form action="{{route('part.destroy', $part)}}" method="post">
                                     @method("DELETE")
                                     @csrf
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </div>
+                                        <button type="submit" class="btn btn-danger">Delete Part</button>
                                 </form>
                             </td>
                         </tr>

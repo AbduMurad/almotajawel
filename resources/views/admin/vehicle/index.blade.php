@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="border shadow col-sm-3">
+        <div class="card-header shadow col-sm-3">
             <div class="row">
                 <form action="{{route('vehicle.store')}}" method="post" enctype="multipart/form-data" class="col">
                     @csrf
@@ -37,10 +37,9 @@
                     <thead class="card-header">
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
+                            <th>Vehicle</th>
                             <th>Original Name</th>
                             <th>Street Name</th>
-                            <th>Vehicle</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -53,16 +52,16 @@
                             <td class="align-middle">{{$vehicle->original_name}}</td>
                             <td class="align-middle">{{$vehicle->name}}</td>
                             <td class="align-middle">
+                                <form action="{{route('vehicle.edit', $vehicle)}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Edit Vehicle</button>
+                                </form>
+                            </td>
+                            <td class="align-middle">
                                 <form action="{{route('vehicle.destroy', $vehicle->id)}}" method="post">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-danger">Delete Vehicle</button>
-                                </form>
-                            </td>
-                            <td class="align-middle">
-                                <form action="{{route('vehicle.edit', $vehicle)}}" method="post">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Edit Vehicle</button>
                                 </form>
                             </td>
                         </tr>

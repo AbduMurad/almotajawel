@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+<div class="container">
     <div class="">
         <div class="">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Links</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                     </div>
                     @endif
 
-                    <h1>Home.Blade.php</h1>
+                    <h3><a href="{{route('parts.index')}}">See All Parts</a></h3>
 
 
                 </div>

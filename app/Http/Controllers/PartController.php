@@ -47,10 +47,10 @@ class PartController extends Controller
         if ($file = $request->file('path')) {
             $name = time() . $file->getClientOriginalName();
             $file->move('part_images', $name);
+            File::delete(public_path() . $part->image->path);
+            $part->image->path = $name;
+            $part->image->save();
         }
-
-        $part->image()->create(['path' => $name]);
-        
         return redirect(route('parts.index'));
     }
 

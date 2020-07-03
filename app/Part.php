@@ -31,6 +31,9 @@ class Part extends Model
         return $this->morphOne('App\Image', 'imageable');
     }
 
+    public function vehicle() {
+        return $this->belongsTo('App\Vehicle');
+    }
     
 }
  
